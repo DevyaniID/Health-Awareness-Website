@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Underweight Non-Vegetarian Diet Plan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2e7d32;
+    }
+
+    .days-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .day-button {
+      padding: 10px 18px;
+      background-color: #81c784;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .day-button:hover {
+      background-color: #66bb6a;
+    }
+
+    .meal-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .meal-section {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 20px auto;
+      width: 80%;
+    }
+
+    .meal-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #388e3c;
+    }
+
+    .calories, .tip {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Normal Non-Vegetarian Weekly Diet Plan</h1>
+
+  <div class="days-nav">
+    <button class="day-button" onclick="showDay('monday')">Monday</button>
+    <button class="day-button" onclick="showDay('tuesday')">Tuesday</button>
+    <button class="day-button" onclick="showDay('wednesday')">Wednesday</button>
+    <button class="day-button" onclick="showDay('thursday')">Thursday</button>
+    <button class="day-button" onclick="showDay('friday')">Friday</button>
+    <button class="day-button" onclick="showDay('saturday')">Saturday</button>
+    <button class="day-button" onclick="showDay('sunday')">Sunday</button>
+  </div>
+
+  <!-- Replace 'images/' with your actual image paths -->
+
+<!-- Monday -->
+<!-- Normal Weight Non-Vegetarian Weekly Plan -->
+<div id="monday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Boiled Eggs + Oats Porridge</div>
+    <img src="image/egg white omelette.jpg" alt="Boiled Eggs and Oats">
+    <div class="calories">Calories: ~350 kcal</div>
+    <div class="tip">Tip: Protein-rich and keeps you full longer. Add cinnamon to oats for flavor.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Fish Curry + Brown Rice + Sautéed Greens</div>
+    <img src="image/fish curry.jpg" alt="Fish Curry">
+    <div class="calories">Calories: ~600 kcal</div>
+    <div class="tip">Tip: Use minimal oil. Spinach or kale add essential micronutrients.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Chicken Soup or Grilled Kebabs</div>
+    <img src="image/chicken soup.jpg" alt="Chicken Soup">
+    <div class="calories">Calories: ~250 kcal</div>
+    <div class="tip">Tip: Prefer grilled over fried for healthy protein intake.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Egg Curry + Chapati + Salad</div>
+    <img src="image/egg curry.jpg" alt="Egg Curry">
+    <div class="calories">Calories: ~500 kcal</div>
+    <div class="tip">Tip: Two boiled eggs are ideal. Whole wheat chapati preferred.</div>
+  </div>
+</div>
+
+<div id="tuesday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Scrambled Eggs + Multigrain Toast</div>
+    <img src="image/scrambled egg.jpg" alt="Scrambled Eggs">
+    <div class="calories">Calories: ~370 kcal</div>
+    <div class="tip">Tip: Use minimal oil or ghee. Pair with herbal tea or warm water with lemon.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Grilled Chicken + Millet Roti + Veggies</div>
+    <img src="image/chicken sausage.jpg" alt="Grilled Chicken">
+    <div class="calories">Calories: ~580 kcal</div>
+    <div class="tip">Tip: Use foxtail or ragi roti for added fiber and minerals.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Boiled Eggs + Buttermilk</div>
+    <img src="image/boiled egg whites.jpg" alt="Boiled Eggs Snack">
+    <div class="calories">Calories: ~220 kcal</div>
+    <div class="tip">Tip: Buttermilk helps in digestion; eggs give sustained energy.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Fish Tikka + Stir-Fried Veggies</div>
+    <img src="image/grilled fish.jpg" alt="Fish Tikka">
+    <div class="calories">Calories: ~500 kcal</div>
+    <div class="tip">Tip: Use lemon and herbs for taste. Avoid high-carb add-ons at night.</div>
+  </div>
+</div>
+<!-- Wednesday -->
+<div id="wednesday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Egg Omelette + Multigrain Toast</div>
+    <img src="image/egg white omelette.jpg" alt="Egg Omelette with Toast">
+    <div class="calories">Calories: ~380 kcal</div>
+    <div class="tip">Tip: Add vegetables to your omelette for fiber.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Chicken Curry + Brown Rice + Salad</div>
+    <img src="image/chiken salad.jpg" alt="Chicken Curry and Rice">
+    <div class="calories">Calories: ~650 kcal</div>
+    <div class="tip">Tip: Use minimal oil and serve with fresh cucumber salad.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Boiled Eggs + Green Tea</div>
+    <img src="image/boiled egg whites.jpg" alt="Boiled Eggs">
+    <div class="calories">Calories: ~250 kcal</div>
+    <div class="tip">Tip: Green tea supports metabolism.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Fish Tikka + Grilled Vegetables</div>
+    <img src="image/grilled fish.jpg" alt="Fish Tikka">
+    <div class="calories">Calories: ~500 kcal</div>
+    <div class="tip">Tip: Use curd-based marination for better digestion.</div>
+  </div>
+</div>
+
+<!-- Thursday -->
+<div id="thursday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Scrambled Eggs + Oats Porridge</div>
+    <img src="image/scrambled egg.jpg" alt="Scrambled Eggs and Oats">
+    <div class="calories">Calories: ~400 kcal</div>
+    <div class="tip">Tip: Use skim milk in porridge for lighter option.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Fish Curry + Chapati + Steamed Beans</div>
+    <img src="image/fish curry.jpg" alt="Fish Curry">
+    <div class="calories">Calories: ~600 kcal</div>
+    <div class="tip">Tip: Bake or grill fish instead of frying.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Chicken Soup</div>
+    <img src="image/fish curry.jpg" alt="Chicken Soup">
+    <div class="calories">Calories: ~200 kcal</div>
+    <div class="tip">Tip: Homemade broth works best for nutrients.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Egg Curry + Brown Rice + Salad</div>
+    <img src="image/egg curry.jpg" alt="Egg Curry">
+    <div class="calories">Calories: ~520 kcal</div>
+    <div class="tip">Tip: Pair with cucumber-onion salad for hydration.</div>
+  </div>
+</div>
+
+<!-- Friday -->
+<div id="friday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Masala Omelette + Whole Grain Toast</div>
+    <img src="image/egg white omelette.jpg" alt="Masala Omelette">
+    <div class="calories">Calories: ~370 kcal</div>
+    <div class="tip">Tip: Add bell peppers and onions for crunch.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Chicken Kheema + Chapati + Buttermilk</div>
+    <img src="image/chi kheema.jpg" alt="Chicken Kheema">
+    <div class="calories">Calories: ~640 kcal</div>
+    <div class="tip">Tip: Buttermilk soothes digestion post-spice.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Roasted Chicken Slices + Coconut Water</div>
+    <img src="image/chicken sausage.jpg" alt="Chicken Snack">
+    <div class="calories">Calories: ~260 kcal</div>
+    <div class="tip">Tip: High protein and rehydrating combo.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Grilled Fish + Sauteed Spinach + Quinoa</div>
+    <img src="image/grilled fish.jpg" alt="Grilled Fish">
+    <div class="calories">Calories: ~550 kcal</div>
+    <div class="tip">Tip: Squeeze lemon for extra vitamin C.</div>
+  </div>
+</div>
+
+<!-- Saturday -->
+<div id="saturday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Egg Sandwich + Milk</div>
+    <img src="image/cheese sandwich.jpg" alt="Egg Sandwich">
+    <div class="calories">Calories: ~400 kcal</div>
+    <div class="tip">Tip: Use multigrain bread for fiber.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Chicken Tikka Wrap + Mint Chutney</div>
+    <img src="image/chi wrap.jpg" alt="Chicken Tikka Wrap">
+    <div class="calories">Calories: ~600 kcal</div>
+    <div class="tip">Tip: Wrap in whole wheat roti for healthy carbs.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Fruit Bowl + Yogurt</div>
+    <img src="image/fruit chat.jpg" alt="Fruit and Yogurt">
+    <div class="calories">Calories: ~300 kcal</div>
+    <div class="tip">Tip: Use seasonal fruits for better nutrition.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Boiled Eggs + Grilled Chicken + Veggies</div>
+    <img src="image/chiken stir fry.jpg" alt="Grilled Dinner">
+    <div class="calories">Calories: ~530 kcal</div>
+    <div class="tip">Tip: Season lightly for better heart health.</div>
+  </div>
+</div>
+
+<!-- Sunday -->
+<div id="sunday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Veg Omelette + Milkshake</div>
+    <img src="image/besan chill.jpg" alt="Veg Omelette">
+    <div class="calories">Calories: ~420 kcal</div>
+    <div class="tip">Tip: Milkshake should be low sugar.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Prawns Curry + Brown Rice + Buttermilk</div>
+    <img src="image/prawn curry.jpg" alt="Prawn Curry">
+    <div class="calories">Calories: ~640 kcal</div>
+    <div class="tip">Tip: Use less salt and more spices for taste.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Snack: Chicken Skewers + Lime Juice</div>
+    <img src="image/chicken sausage.jpg" alt="Chicken Skewers">
+    <div class="calories">Calories: ~270 kcal</div>
+    <div class="tip">Tip: Grill instead of frying for fewer calories.</div>
+  </div>
+
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Grilled Chicken + Chapati + Salad</div>
+    <img src="image/chi wrap.jpg" alt="Grilled Chicken">
+    <div class="calories">Calories: ~500 kcal</div>
+    <div class="tip">Tip: Avoid heavy carbs at night.</div>
+  </div>
+</div>
+
+
+
+
+  <script>
+    function showDay(dayId) {
+      const containers = document.querySelectorAll('.meal-container');
+      containers.forEach(container => container.style.display = 'none');
+      document.getElementById(dayId).style.display = 'block';
+    }
+
+    // Default show Monday
+    showDay('monday');
+  </script>
+
+</body>
+</html>

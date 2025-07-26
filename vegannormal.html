@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vegan Weekly Diet Plan - Normal Weight</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2e7d32;
+    }
+
+    .days-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .day-button {
+      padding: 10px 18px;
+      background-color: #81c784;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .day-button:hover {
+      background-color: #66bb6a;
+    }
+
+    .meal-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .meal-section {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 20px auto;
+      width: 80%;
+    }
+
+    .meal-section img {
+      width: 180px;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .meal-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #388e3c;
+    }
+
+    .calories, .tip {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vegan Weekly Diet Plan (Normal Weight)</h1>
+
+  <div class="days-nav">
+    <button class="day-button" onclick="showDay('monday')">Monday</button>
+    <button class="day-button" onclick="showDay('tuesday')">Tuesday</button>
+    <button class="day-button" onclick="showDay('wednesday')">Wednesday</button>
+    <button class="day-button" onclick="showDay('thursday')">Thursday</button>
+    <button class="day-button" onclick="showDay('friday')">Friday</button>
+    <button class="day-button" onclick="showDay('saturday')">Saturday</button>
+    <button class="day-button" onclick="showDay('sunday')">Sunday</button>
+  </div>
+
+<!-- Monday -->
+<div id="monday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Oats with Almond Milk & Fruits</div>
+    <img src="image/oats.png" alt="Oats with Almond Milk">
+    <div class="calories">Calories: ~400 kcal</div>
+    <div class="tip">Tip: Add chia seeds for omega-3s and extra fiber.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Quinoa Veg Bowl + Hummus</div>
+    <img src="image/quinao pulav.jpg" alt="Quinoa Veg Bowl">
+    <div class="calories">Calories: ~600 kcal</div>
+    <div class="tip">Tip: Use lemon dressing for flavor without fat.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Snack: Apple Slices with Peanut Butter</div>
+    <img src="image/apple slices.jpg" alt="Apple and Peanut Butter">
+    <div class="calories">Calories: ~250 kcal</div>
+    <div class="tip">Tip: Use unsweetened peanut butter.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Tofu Stir Fry + Brown Rice</div>
+    <img src="image/Weeknight-Tofu-Stir-Fry-7.jpg" alt="Tofu Stir Fry">
+    <div class="calories">Calories: ~550 kcal</div>
+    <div class="tip">Tip: Include colorful veggies for micronutrients.</div>
+  </div>
+</div>
+
+<!-- Tuesday -->
+<div id="tuesday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Vegan Smoothie Bowl</div>
+    <img src="image/smoothie.png" alt="Smoothie Bowl">
+    <div class="calories">Calories: ~420 kcal</div>
+    <div class="tip">Tip: Use flaxseeds and berries for antioxidants.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Chickpea Salad Wrap</div>
+    <img src="image/vegan_tue_lunch.jpg" alt="Chickpea Wrap">
+    <div class="calories">Calories: ~580 kcal</div>
+    <div class="tip">Tip: Use whole wheat wrap for added fiber.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Snack: Roasted Edamame + Herbal Tea</div>
+    <img src="image/roasted edamame.jpg" alt="Edamame and Tea">
+    <div class="calories">Calories: ~200 kcal</div>
+    <div class="tip">Tip: Avoid too much salt.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Dinner: Lentil Soup + Multigrain Bread</div>
+    <img src="image/lauki soup + grilled paneer.png" alt="Lentil Soup">
+    <div class="calories">Calories: ~520 kcal</div>
+    <div class="tip">Tip: Add spinach for iron and vitamin C.</div>
+  </div>
+</div>
+
+<!-- Wednesday -->
+<div id="wednesday" class="meal-container">
+  <div class="meal-section">
+    <div class="meal-title">Breakfast: Chia Pudding with Berries</div>
+    <img src="image/chia pudding.jpg" alt="Chia Pudding">
+    <div class="calories">Calories: ~400 kcal</div>
+    <div class="tip">Tip: Soak chia seeds overnight in almond milk.</div>
+  </div>
+  <div class="meal-section">
+    <div class="meal-title">Lunch: Vegan Buddha Bowl</div>
+    <img src="image/buddha bowl.jpg" alt="Buddha Bowl">
+    <div class="calories">Calories: ~600 kcal</div>
+    <div class="
+
+  <!-- Repeat same structure for Wed–Sun -->
+  <!-- Replace IDs and image paths accordingly -->
+
+  <script>
+    function showDay(dayId) {
+      const containers = document.querySelectorAll('.meal-container');
+      containers.forEach(container => container.style.display = 'none');
+      document.getElementById(dayId).style.display = 'block';
+    }
+    showDay('monday'); // Show Monday by default
+  </script>
+
+</body>
+</html>
