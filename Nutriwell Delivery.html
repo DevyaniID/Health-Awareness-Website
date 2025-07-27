@@ -1,0 +1,1627 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delivery - NutriWell</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f9f9f9;
+        overflow-x: hidden;
+        
+    }
+
+    h2.section-title {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2rem;
+    }
+
+    header {
+        background-color: #2c8030;
+        color: white;
+        padding: 1rem;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+        position: fixed;      /* Add this */
+        top: 0;               /* Add this */
+        left: 0;              /* Add this */
+        width: 98.5%;          /* Add this */
+        z-index: 1000;        /* Add this */
+        
+        
+    }
+
+    nav a {
+        color: white;
+        
+        margin-left: 2rem;
+        padding: 1rem auto;
+        text-decoration:none ;
+        font-weight: 500;
+        
+    }
+
+    .menu-buttons {
+        display: flex;
+        justify-content: center;
+        padding: 10px ;
+        padding-bottom: 3%;
+        padding-top: 5%;
+        gap: 1rem;
+        margin: 20px;
+        flex-wrap: wrap;
+        background-color: #65b969;
+        width: 100%;
+        margin: 0%;
+        
+    }
+
+    .menuline {
+        color: #0b4e0f;
+        display: flex;
+        font-size: 1.1rem;
+        justify-content: center;
+        align-items: center; 
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .menu-buttons button {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 80px;
+        background-color: #388e3c; 
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .menu-buttons button:hover {
+        background-color: #0f8513;
+        transform: translateY(-5px);
+    }
+
+    /* .menu-buttons button:active {
+        background-color: #f9f9f9;
+        color: #000000;
+    } */
+
+    .menu-section {
+        display: none;
+        padding: 10px 5%;
+    }
+
+    .menu-section.active {
+        display: block;
+    }
+
+    .card-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .food-vertical-card {
+        margin: 1%;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 200px;
+        transition: transform 0.3s;
+    }
+
+    .food-vertical-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .food-vertical-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    .details {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .food-name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .food-price {
+        color: #424141;
+    }
+
+    @media (max-width: 768px) {
+        .food-vertical-card {
+        width: 45%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .food-vertical-card {
+        width: 100%;
+        }
+    }
+
+ .sticky-footer {
+  background-color: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  
+}
+
+
+/* Add this new rule for the button */
+.add-to-cart-btn {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #1b5e20;
+}
+
+/* Updated styles for the quantity controls container */
+.qty-controls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Center the +/- buttons */
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* These existing rules are now fine */
+.qty-controls button {
+    background-color: #2c8030;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.qty-controls span.qty {
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+    .cart-window {
+        display:none; 
+        position:fixed; 
+        top:100px; 
+        right:10px; 
+        background:white; 
+        box-shadow:0 0 10px rgba(0,0,0,0.3); 
+        border-radius:10px; 
+        padding:1rem; 
+        z-index:999;
+        min-width: 200px;
+        min-height: 150px;
+    }
+
+    .toggleCart button {
+        background:#ffffff22; 
+        color:rgb(255, 255, 255);
+        border:none; 
+        font-weight:600; 
+        padding:0.5rem 1rem; 
+        border-radius:20px; 
+        cursor:pointer;
+        
+    }
+
+    .extra {
+        margin-top: 40px;
+    }
+
+  </style>
+</head>
+<body>
+
+    <header>
+        <h1>
+            NutriWell
+        </h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#bmi">BMI Calculator</a>
+            <a href="index.html#tips">Health Tips</a>
+            <a href="index.html#diet">Diet Plans</a>
+            <a href="NutriWell Delivery.html">Delivery</a>
+        </nav>
+        
+        <button onclick="toggleCart()" class="toggleCart">
+                    🛒 Cart <span id="cart-count">0</span> items
+        </button>
+
+  </header>
+
+  
+
+  <div class="menu-buttons">
+    <div class="menuline">
+        <h2 style="text-align: center;">
+            Inspirations for your Healthy Bites
+        </h2> 
+    </div>
+
+    <button onclick="showSection('all')">Explore All</button>
+    <button onclick="showSection('veg')">Vegetarian</button>
+    <button onclick="showSection('nonveg')">Non-Vegetarian</button>
+    <button onclick="showSection('vegan')">Vegan</button>
+  </div>
+
+  <!-- All Menu -->
+  <section class="menu-section active" id="menu-all">
+
+    <div class = "title"> 
+        <h2 class="section-title">Explore All Items</h2>
+    </div>
+    
+    <div class="card-row"> </div>
+   
+  </section>
+
+  <!-- Veg -->
+  
+  <section class="menu-section" id="menu-veg">
+    
+    <div class = "title"> 
+    
+        <h2 class="section-title">Veg Items</h2>
+    </div>
+    
+    <div class="card-row">
+        <div class="food-vertical-card" data-name="yoghurt" data-price="25">
+            <img src="images/yoghurt.jpg" alt="yoghurt" />
+                <div class="details">
+                    <div class="food-name"> yoghurt </div>
+                    <div class="food-price"> 25 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Paneer" data-price="36">
+            <img src="images/Panner.jpeg" alt="Panner" />
+                <div class="details">
+                    <div class="food-name"> Panner</div>
+                    <div class="food-price"> 36</div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Cheese" data-price="35">
+            <img src="images/cheese.jpg" alt="Cheese" />
+                <div class="details">
+                    <div class="food-name"> Cheese </div>
+                    <div class="food-price"> 35</div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Milk" data-price="72">
+            <img src="images/milk.jpg" alt="Milk" />
+                <div class="details">
+                    <div class="food-name"> Milk</div>
+                    <div class="food-price"> 72</div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Ghee" data-price="55">
+            <img src="images/ghee.jpeg" alt="Ghee" />
+                <div class="details">
+                    <div class="food-name"> Ghee</div>
+                    <div class="food-price"> 55 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    
+      <div class="food-vertical-card" data-name="Honey" data-price="200">
+            <img src="images/honey.jpeg" alt="Honey" />
+                <div class="details">
+                    <div class="food-name"> Honey</div>
+                    <div class="food-price"> 200 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Mint" data-price="20">
+            <img src="images/mint.jpeg" alt="MInt" />
+                <div class="details">
+                    <div class="food-name"> Mint</div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="ginger" data-price="20">
+            <img src="images/ginger.jpg" alt="ginger" />
+                <div class="details">
+                    <div class="food-name"> Ginger </div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Garlic" data-price="20">
+            <img src="images/Garlic.webp" alt="Garlic" />
+                <div class="details">
+                    <div class="food-name"> Garlic</div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Coriander" data-price="30">
+            <img src="images/coriander.webp" alt="Coriander" />
+                <div class="details">
+                    <div class="food-name"> Coriander </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Jowar" data-price="40">
+            <img src="images/jowarflour.webp" alt="Jowar" />
+                <div class="details">
+                    <div class="food-name"> Jowar </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Cabage" data-price="30">
+            <img src="images/cabage.webp" alt="Cabage" />
+                <div class="details">
+                    <div class="food-name"> Cabage </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Capsicum" data-price="40">
+            <img src="images/capsicum.jpeg" alt="capsicum" />
+                <div class="details">
+                    <div class="food-name"> Capsicum </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Chana" data-price="25">
+            <img src="images/chana.jpeg" alt="chana" />
+                <div class="details">
+                    <div class="food-name"> Chana </div>
+                    <div class="food-price"> 25 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Apples" data-price="100">
+            <img src="images/Apple.jpeg" alt="Apple" />
+                <div class="details">
+                    <div class="food-name"> Apple </div>
+                    <div class="food-price"> 120 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Banana" data-price="40">
+            <img src="images/banana.jpeg" alt="Banana" />
+                <div class="details">
+                    <div class="food-name"> Banana </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Berries" data-price="100">
+            <img src="images/berries.jpeg" alt="Berries" />
+                <div class="details">
+                    <div class="food-name"> Berries </div>
+                    <div class="food-price"> 100 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Bottle Ground" data-price="50">
+            <img src="images/bottleground.webp" alt="bottleground" />
+                <div class="details">
+                    <div class="food-name"> bottleground </div>
+                    <div class="food-price"> 50 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Brocoli" data-price="60">
+            <img src="images/brocoli.jpeg" alt="Brocoli" />
+                <div class="details">
+                    <div class="food-name"> Brocoli </div>
+                    <div class="food-price"> 60 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Carrot" data-price="50">
+            <img src="images/carrot.webp" alt="Carrot" />
+                <div class="details">
+                    <div class="food-name"> Carrot </div>
+                    <div class="food-price"> 50 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="" data-price="120">
+            <img src="images/zuchini.webp" alt="zuchini" />
+                <div class="details">
+                    <div class="food-name"> zuchini </div>
+                    <div class="food-price"> 120 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="papaya" data-price="80">
+            <img src="images/papaya.jpeg" alt="papaya" />
+                <div class="details">
+                    <div class="food-name"> papaya </div>
+                    <div class="food-price"> 80 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="coconut" data-price="20">
+            <img src="images/coconut.jpg" alt="coconut" />
+                <div class="details">
+                    <div class="food-name"> coconut </div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Watermelon" data-price="60">
+            <img src="images/Watermelon.jpg" alt="Watermelon" />
+                <div class="details">
+                    <div class="food-name"> Watermelon </div>
+                    <div class="food-price">  60 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Dates" data-price="120">
+            <img src="images/dates.jpg" alt="Dates" />
+                <div class="details">
+                    <div class="food-name"> Dates </div>
+                    <div class="food-price"> 120 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Tomato" data-price="40">
+            <img src="images/tomato.webp" alt="Tomato" />
+                <div class="details">
+                    <div class="food-name"> Tomato </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="spinach" data-price="30">
+            <img src="images/spinach.webp" alt="spinach" />
+                <div class="details">
+                    <div class="food-name"> Spinach </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Soya" data-price="40">
+            <img src="images/Soya.png" alt="Soya" />
+                <div class="details">
+                    <div class="food-name"> Soya </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="redrice" data-price="55">
+            <img src="images/redrice.jpg" alt="redrice" />
+                <div class="details">
+                    <div class="food-name"> Red Rice </div>
+                    <div class="food-price"> 50 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Rajma" data-price="30">
+            <img src="images/rajmajpg.jpg" alt="Rajma" />
+                <div class="details">
+                    <div class="food-name"> Rajma </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Quinoa" data-price="35">
+            <img src="images/quinoa.jpg" alt="Quinoa" />
+                <div class="details">
+                    <div class="food-name"> Quinoa</div>
+                    <div class="food-price"> 35 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="onion" data-price="70">
+            <img src="images/onion.jpeg" alt="onion" />
+                <div class="details">
+                    <div class="food-name"> Onion</div>
+                    <div class="food-price"> 70 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="okra" data-price="60">
+            <img src="images/okra.jpeg" alt="Okra" />
+                <div class="details">
+                    <div class="food-name"> Okra</div>
+                    <div class="food-price"> 60 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Oats" data-price="45">
+            <img src="images/oatsjpg.jpg" alt="oats" />
+                <div class="details">
+                    <div class="food-name"> Oats</div>
+                    <div class="food-price"> 45 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="moongdal" data-price="35">
+            <img src="images/moongdal.webp" alt="moongdal" />
+                <div class="details">
+                    <div class="food-name"> Moong Dal</div>
+                    <div class="food-price"> 35</div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    
+    </div>
+  </section>
+
+  <!-- Non Veg -->
+
+  <section class="menu-section" id="menu-nonveg">
+
+    <div class = "title"> 
+        <h2 class="section-title">non-Veg Items</h2>
+    </div>
+
+
+    <div class="card-row">
+       
+        <div class="food-vertical-card" data-name="chicken" data-price="555">
+                <img src="images/chicken.jpg" alt="chicken" />
+                    <div class="details">
+                        <div class="food-name"> chicken</div>
+                        <div class="food-price"> 555 </div>
+                    
+                        <div class="cart-controls">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button onclick="decreaseQty(this)">−</button>
+                                <span class="qty">1</span>
+                                <button onclick="increaseQty(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="food-vertical-card" data-name="eggs" data-price="130">
+                <img src="images/eggs.webp" alt="eggs" />
+                    <div class="details">
+                        <div class="food-name"> eggs </div>
+                        <div class="food-price"> 130 </div>
+                    
+                        <div class="cart-controls">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button onclick="decreaseQty(this)">−</button>
+                                <span class="qty">1</span>
+                                <button onclick="increaseQty(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="food-vertical-card" data-name="fish" data-price="460">
+                <img src="images/fish,jpg.jpg" alt="fish" />
+                    <div class="details">
+                        <div class="food-name"> fish </div>
+                        <div class="food-price"> 460 </div>
+                    
+                        <div class="cart-controls">
+                            <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                            <div class="qty-controls" style="display:none;">
+                                <button onclick="decreaseQty(this)">−</button>
+                                <span class="qty">1</span>
+                                <button onclick="increaseQty(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+             
+    
+    
+    </div>
+  </section>
+
+  <!-- Vegan -->
+
+  <section class="menu-section" id="menu-vegan">
+
+    <div class = "title"> 
+        <h2 class="section-title">Vegan Items</h2>
+    </div>
+
+    <div class="card-row">
+
+        <div class="food-vertical-card" data-name="Apples" data-price="100">
+            <img src="images/Apple.jpeg" alt="Apple" />
+                <div class="details">
+                    <div class="food-name"> Apple </div>
+                    <div class="food-price"> 120 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Banana" data-price="40">
+            <img src="images/banana.jpeg" alt="Banana" />
+                <div class="details">
+                    <div class="food-name"> Banana </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Berries" data-price="100">
+            <img src="images/berries.jpeg" alt="Berries" />
+                <div class="details">
+                    <div class="food-name"> Berries </div>
+                    <div class="food-price"> 100 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Bottle Ground" data-price="50">
+            <img src="images/bottleground.webp" alt="bottleground" />
+                <div class="details">
+                    <div class="food-name"> bottleground </div>
+                    <div class="food-price"> 50 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Brocoli" data-price="60">
+            <img src="images/brocoli.jpeg" alt="Brocoli" />
+                <div class="details">
+                    <div class="food-name"> Brocoli </div>
+                    <div class="food-price"> 60 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Carrot" data-price="50">
+            <img src="images/carrot.webp" alt="Carrot" />
+                <div class="details">
+                    <div class="food-name"> Carrot </div>
+                    <div class="food-price"> 50 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="" data-price="120">
+            <img src="images/zuchini.webp" alt="zuchini" />
+                <div class="details">
+                    <div class="food-name"> zuchini </div>
+                    <div class="food-price"> 120 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="papaya" data-price="80">
+            <img src="images/papaya.jpeg" alt="papaya" />
+                <div class="details">
+                    <div class="food-name"> papaya </div>
+                    <div class="food-price"> 80 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="coconut" data-price="20">
+            <img src="images/coconut.jpg" alt="coconut" />
+                <div class="details">
+                    <div class="food-name"> coconut </div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Watermelon" data-price="60">
+            <img src="images/Watermelon.jpg" alt="Watermelon" />
+                <div class="details">
+                    <div class="food-name"> Watermelon </div>
+                    <div class="food-price">  60 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Dates" data-price="120">
+            <img src="images/dates.jpg" alt="Dates" />
+                <div class="details">
+                    <div class="food-name"> Dates </div>
+                    <div class="food-price"> 120 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Tomato" data-price="40">
+            <img src="images/tomato.webp" alt="Tomato" />
+                <div class="details">
+                    <div class="food-name"> Tomato </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="spinach" data-price="30">
+            <img src="images/spinach.webp" alt="spinach" />
+                <div class="details">
+                    <div class="food-name"> Spinach </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Soya" data-price="40">
+            <img src="images/Soya.png" alt="Soya" />
+                <div class="details">
+                    <div class="food-name"> Soya </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="redrice" data-price="55">
+            <img src="images/redrice.jpg" alt="redrice" />
+                <div class="details">
+                    <div class="food-name"> Red Rice </div>
+                    <div class="food-price"> 50 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Rajma" data-price="30">
+            <img src="images/rajmajpg.jpg" alt="Rajma" />
+                <div class="details">
+                    <div class="food-name"> Rajma </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Quinoa" data-price="35">
+            <img src="images/quinoa.jpg" alt="Quinoa" />
+                <div class="details">
+                    <div class="food-name"> Quinoa</div>
+                    <div class="food-price"> 35 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="onion" data-price="70">
+            <img src="images/onion.jpeg" alt="onion" />
+                <div class="details">
+                    <div class="food-name"> Onion</div>
+                    <div class="food-price"> 70 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="okra" data-price="60">
+            <img src="images/okra.jpeg" alt="Okra" />
+                <div class="details">
+                    <div class="food-name"> Okra</div>
+                    <div class="food-price"> 60 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Oats" data-price="45">
+            <img src="images/oatsjpg.jpg" alt="oats" />
+                <div class="details">
+                    <div class="food-name"> Oats</div>
+                    <div class="food-price"> 45 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="moongdal" data-price="35">
+            <img src="images/moongdal.webp" alt="moongdal" />
+                <div class="details">
+                    <div class="food-name"> Moong Dal</div>
+                    <div class="food-price"> 35</div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+        <div class="food-vertical-card" data-name="Mint" data-price="20">
+            <img src="images/mint.jpeg" alt="MInt" />
+                <div class="details">
+                    <div class="food-name"> Mint</div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="ginger" data-price="20">
+            <img src="images/ginger.jpg" alt="ginger" />
+                <div class="details">
+                    <div class="food-name"> Ginger </div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Garlic" data-price="20">
+            <img src="images/Garlic.webp" alt="Garlic" />
+                <div class="details">
+                    <div class="food-name"> Garlic</div>
+                    <div class="food-price"> 20 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Coriander" data-price="30">
+            <img src="images/coriander.webp" alt="Coriander" />
+                <div class="details">
+                    <div class="food-name"> Coriander </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Jowar" data-price="40">
+            <img src="images/jowarflour.webp" alt="Jowar" />
+                <div class="details">
+                    <div class="food-name"> Jowar </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Cabage" data-price="30">
+            <img src="images/cabage.webp" alt="Cabage" />
+                <div class="details">
+                    <div class="food-name"> Cabage </div>
+                    <div class="food-price"> 30 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Capsicum" data-price="40">
+            <img src="images/capsicum.jpeg" alt="capsicum" />
+                <div class="details">
+                    <div class="food-name"> Capsicum </div>
+                    <div class="food-price"> 40 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="food-vertical-card" data-name="Chana" data-price="25">
+            <img src="images/chana.jpeg" alt="chana" />
+                <div class="details">
+                    <div class="food-name"> Chana </div>
+                    <div class="food-price"> 25 </div>
+                
+                    <div class="cart-controls">
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
+                        <div class="qty-controls" style="display:none;">
+                            <button onclick="decreaseQty(this)">−</button>
+                            <span class="qty">1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+ 
+        
+
+    </div>
+  </section>
+  <div class="extra"> <div>
+    
+
+
+  <div id="cart-window" class="cart-window">
+    <h3>Your Cart</h3>
+    <ul id="cart-items" style="list-style:none; padding-left:0;"></ul>
+    <button onclick="placeOrder()" style="margin-top:10px; background-color:#2e7d32; color:white; border:none; padding:10px 20px; border-radius:5px;">Order Now</button>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Set the default view to show all sections
+    showSection('all');
+
+    // Populate the "Explore All" section by cloning cards from other sections
+    const allRow = document.querySelector('#menu-all .card-row');
+    if (allRow) {
+        allRow.innerHTML = ''; // Clear existing items
+        ['veg', 'nonveg', 'vegan'].forEach(sectionId => {
+            const section = document.getElementById(`menu-${sectionId}`);
+            if (section) {
+                section.querySelectorAll('.food-vertical-card').forEach(card => {
+                    // cloneNode(true) also copies inline onclick attributes
+                    allRow.appendChild(card.cloneNode(true));
+                });
+            }
+        });
+    }
+});
+
+const cart = {};
+
+function showSection(type) {
+    document.querySelectorAll(".menu-section").forEach(sec => sec.classList.remove("active"));
+    if (type === "all") {
+        ['veg', 'nonveg', 'vegan', 'all'].forEach(id => {
+            const el = document.getElementById(`menu-${id}`);
+            if (el) el.classList.add("active");
+        });
+    } else {
+        const el = document.getElementById("menu-" + type);
+        if (el) el.classList.add("active");
+    }
+}
+
+function addToCart(btn) {
+    const card = btn.closest('.food-vertical-card');
+    const name = card.dataset.name;
+    const price = parseInt(card.dataset.price);
+
+    cart[name] = { qty: 1, price: price };
+
+    // --- UI Update ---
+    // Hide the "Add to Cart" button
+    btn.style.display = 'none'; 
+    // Show the quantity controls
+    card.querySelector('.qty-controls').style.display = 'inline-flex'; 
+    card.querySelector('.qty').textContent = '1';
+
+    updateCartDisplay();
+}
+
+function increaseQty(btn) {
+    const card = btn.closest('.food-vertical-card');
+    const name = card.dataset.name;
+    cart[name].qty += 1;
+    card.querySelector('.qty').textContent = cart[name].qty;
+    updateCartDisplay();
+}
+
+function decreaseQty(btn) {
+    const card = btn.closest('.food-vertical-card');
+    const name = card.dataset.name;
+    
+    cart[name].qty -= 1;
+
+    if (cart[name].qty <= 0) {
+        delete cart[name];
+        // --- UI Update ---
+        // Hide quantity controls
+        card.querySelector('.qty-controls').style.display = 'none';
+        // Show "Add to Cart" button
+        card.querySelector('.add-to-cart-btn').style.display = 'block';
+    } else {
+        card.querySelector('.qty').textContent = cart[name].qty;
+    }
+
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartCountEl = document.getElementById('cart-count');
+    const cartItemsEl = document.getElementById('cart-items');
+    
+    if (!cartCountEl || !cartItemsEl) return;
+
+    cartCountEl.textContent = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+
+    cartItemsEl.innerHTML = '';
+    for (let name in cart) {
+        const item = cart[name];
+        const li = document.createElement('li');
+        li.textContent = `${name} × ${item.qty} = ₹${item.qty * item.price}`;
+        cartItemsEl.appendChild(li);
+    }
+}
+
+function toggleCart() {
+    const cartWindow = document.getElementById('cart-window');
+    if (cartWindow) {
+        cartWindow.style.display = cartWindow.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+function placeOrder() {
+    if (Object.keys(cart).length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    
+    alert("Order Successful! ");
+    
+    // Reset cart logic
+    Object.keys(cart).forEach(key => delete cart[key]);
+    
+    // Reset UI for all product cards on the page
+    document.querySelectorAll('.food-vertical-card').forEach(card => {
+        card.querySelector('.qty-controls').style.display = 'none';
+        card.querySelector('.add-to-cart-btn').style.display = 'block';
+        card.querySelector('.qty').textContent = '1';
+    });
+    
+    updateCartDisplay();
+    toggleCart(); // Close cart window after ordering
+}
+  </script>
+
+<footer class="sticky-footer">
+  &copy; 2025 NutriWell | Designed for Good Health & Well-Being
+</footer>
+
+
+</body>
+</html>
+
