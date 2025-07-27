@@ -228,8 +228,9 @@
 
   <!-- JavaScript Logic -->
   <script>
-    let bmiCategory = "";
-    let bmiCalculated = false;
+    var bmiCategory = "";
+    var bmiCalculated = false;
+    //Cannot redeclare block-scoped variable 'bmiCategory' and 'bmiCalculated' (can use let) remove after PR
 
     function toggleBMI() {
       const bmiSection = document.getElementById('bmi');
