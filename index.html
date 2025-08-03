@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,23 +124,121 @@
     .vegan {
       background: linear-gradient(135deg, #ce93d8, #f3e5f5);
     }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+    .explore {
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      text-align: center;
+      text-decoration: underline;
+      color :#388e3c;
     }
 
-    @keyframes bounceIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+.wellness-hub {
+  background: linear-gradient(to right, #e0f7fa, #e8f5e9);
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    @media (max-width: 768px) {
-      .food-card-container {
-        flex-wrap: nowrap;
-        overflow-x: scroll;
-      }
-    }
+.wellness-hub h2 {
+  font-size: 2.5rem;
+  color: #00796b;
+  margin-bottom: 0.5rem;
+  animation: bounceIn 0.6s ease-in;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+  animation: bounceIn 0.6s ease-in;
+}
+
+.tip-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.tip-card {
+  background-color: white;
+  padding: 1.5rem;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: bounceIn 0.7s ease-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tip-card:hover {
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tip-card h3 {
+  margin-bottom: 0.5rem;
+  color: #00796b;
+}
+
+.tip-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.toggle-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #00796b;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: #004d40;
+}
+
+.more-tips {
+  margin-top: 1.5rem;
+  display: none;
+  animation: bounceIn 0.5s ease-in;
+}
+
+.more-tips ul {
+  list-style: none;
+  padding: 0;
+  color: #444;
+}
+
+.more-tips li {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* Use your existing keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Your existing responsive rule applied here */
+@media (max-width: 768px) {
+  .tip-cards {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -167,7 +265,9 @@
       <p>Track your health, discover diet plans, and stay fit with personalized suggestions.</p>
       <div class="hero-buttons">
         <a href="#bmi" class="btn-primary" onclick="toggleBMI()">Check My BMI</a>
-        <a href="#tips" class="btn-secondary">View Health Tips</a>
+        <a href="NutriWell Delivery.html" class = "btn-secondary">  Order Now ! </a>
+        <a href="#tips" class="btn-primary">View Health Tips</a>
+        
       </div>
     </div>
   </header>
@@ -187,6 +287,10 @@
       <div class="feature-card">
         <h3>📊 BMI Calculator</h3>
         <p>Know where you stand with our easy-to-use BMI tool.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🛒 Instant Delivery </h3>
+        <p>Get your Diet Essentials Delivered within minutes. </p>
       </div>
     </div>
   </section>
@@ -218,15 +322,47 @@
   </section>
 
   <!-- Tips Teaser -->
-  <section class="tips" id="tips">
-    <h2>Daily Wellness Tips</h2>
-    <p>💧 Drink 8+ glasses of water • 💤 Sleep 7–8 hours • 🏃‍♀️ Move your body daily</p>
-    <a href="#" class="btn-primary">Explore More Tips</a>
-  </section>
+<section class="wellness-hub" id="tips">
+  <h2>🧘‍♀️ Daily Wellness Hub</h2>
+  <p class="subtitle">Start your day with habits that make a difference</p>
+
+  <div class="tip-cards">
+    <div class="tip-card water">
+      <h3>💧 Stay Hydrated</h3>
+      <p>Drink at least 8–10 glasses of water daily to boost energy, improve skin, and flush toxins.</p>
+    </div>
+
+    <div class="tip-card sleep">
+      <h3>😴 Prioritize Sleep</h3>
+      <p>Get 7–9 hours of restful sleep. Good sleep improves memory, mood, and immune function.</p>
+    </div>
+
+    <div class="tip-card activity">
+      <h3>🏃‍♂️ Move Daily</h3>
+      <p>Engage in 30+ mins of activity—walk, jog, yoga, or stretch. Movement boosts mood and energy.</p>
+    </div>
+
+    <div class="tip-card mindfulness">
+      <h3>🧘 Practice Mindfulness</h3>
+      <p>Spend 10 mins in silence, meditation, or deep breathing. It lowers stress and boosts focus.</p>
+    </div>
+  </div>
+
+  <button class="toggle-btn" onclick="toggleMoreTips()">Explore More Tips</button>
+
+  <div class="more-tips" id="moreTips">
+    <ul>
+      <li>🍎 Eat colorful fruits & veggies</li>
+      <li>☀️ Get 15 mins of sunlight daily</li>
+      <li>📵 Limit screen time before bed</li>
+      <li>🤝 Connect with loved ones</li>
+    </ul>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>© 2025 NutriWell | Built with 💚 for a healthier you</p>
+    <p>© 2025 NutriWell | Built with 💚 for a healthier you !</p>
   </footer>
 
   <!-- JavaScript Logic -->
@@ -324,333 +460,12 @@
         alert(`📋 ${type} Diet Plan for ${bmiCategory} not found.`);
       }
     }
+
+function toggleMoreTips() {
+  const moreTips = document.getElementById('moreTips');
+  moreTips.style.display = moreTips.style.display === "block" ? "none" : "block";
+}
   </script>
 
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NutriWell – Your Health Companion</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    /* BMI Calculator Styles */
-    .bmi-section {
-      display: none;
-      background-color: #ffffff;
-      padding: 2rem;
-      margin: 2rem auto;
-      width: 90%;
-      max-width: 500px;
-      border: 2px solid #a5d6a7;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .bmi-section h3 {
-      text-align: center;
-      color: #1b5e20;
-      margin-bottom: 1rem;
-    }
-
-    .bmi-section label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    .bmi-section input,
-    .bmi-section select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .bmi-section button {
-      background-color: #388e3c;
-      color: #fff;
-      padding: 0.75rem 1rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      flex: 1;
-    }
-
-    .bmi-section button:hover {
-      background-color: #2e7d32;
-    }
-
-    .bmi-result {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 1rem;
-      color: #2e7d32;
-    }
-
-    /* Diet Cards Styles */
-    .food-card-container {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-top: 1.5rem;
-      gap: 1.5rem;
-    }
-
-    .food-card {
-      min-width: 250px;
-      height: 180px;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      animation: bounceIn 0.7s ease;
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-
-    .food-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
-    }
-
-    .food-card h3 {
-      color: #2e7d32;
-      font-size: 20px;
-      margin-top: 10px;
-    }
-
-    .emoji {
-      font-size: 40px;
-      animation: float 1.5s infinite;
-    }
-
-    .veg {
-      background: linear-gradient(135deg, #a5d6a7, #e8f5e9);
-    }
-
-    .nonveg {
-      background: linear-gradient(135deg, #ef9a9a, #ffebee);
-    }
-
-    .vegan {
-      background: linear-gradient(135deg, #ce93d8, #f3e5f5);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    @keyframes bounceIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @media (max-width: 768px) {
-      .food-card-container {
-        flex-wrap: nowrap;
-        overflow-x: scroll;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">NutriWell</div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#bmi" onclick="toggleBMI()">BMI Calculator</a></li>
-      <li><a href="#tips">Health Tips</a></li>
-      <li><a href="#diet">Diet Plans</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-content">
-      <h1>Your Personal Health Companion</h1>
-      <p>Track your health, discover diet plans, and stay fit with personalized suggestions.</p>
-      <div class="hero-buttons">
-        <a href="#bmi" class="btn-primary" onclick="toggleBMI()">Check My BMI</a>
-        <a href="#tips" class="btn-secondary">View Health Tips</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Features Section -->
-  <section class="features">
-    <h2>Why Choose NutriWell?</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>💡 Personalized Tips</h3>
-        <p>Get health insights tailored to your body type and lifestyle.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🥗 Smart Diet Plans</h3>
-        <p>Whether you want to gain or lose weight, we’ve got you covered.</p>
-      </div>
-      <div class="feature-card">
-        <h3>📊 BMI Calculator</h3>
-        <p>Know where you stand with our easy-to-use BMI tool.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- BMI Calculator Section -->
-  <section class="bmi-section" id="bmi">
-    <h3>Body Mass Index (BMI) Calculator</h3>
-
-    <label for="gender">Select Gender:</label>
-    <select id="gender">
-      <option value="">-- Choose Gender --</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-
-    <label for="height">Height (in cm):</label>
-    <input type="number" id="height" placeholder="Enter your height" />
-
-    <label for="weight">Weight (in kg):</label>
-    <input type="number" id="weight" placeholder="Enter your weight" />
-
-    <div class="button-group">
-      <button onclick="calculateBMI()">Calculate BMI</button>
-      <button onclick="dietAnalysis()" id="dietBtn" disabled>Diet Analysis</button>
-    </div>
-
-    <div class="bmi-result" id="bmiResult"></div>
-    <div id="dietCards" class="food-card-container"></div>
-  </section>
-
-  <!-- Tips Teaser -->
-  <section class="tips" id="tips">
-    <h2>Daily Wellness Tips</h2>
-    <p>💧 Drink 8+ glasses of water • 💤 Sleep 7–8 hours • 🏃‍♀️ Move your body daily</p>
-    <a href="#" class="btn-primary">Explore More Tips</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 NutriWell | Built with 💚 for a healthier you</p>
-  </footer>
-
-  <!-- JavaScript Logic -->
-  <script>
-    let bmiCategory = "";
-    let bmiCalculated = false;
-
-    function toggleBMI() {
-      const bmiSection = document.getElementById('bmi');
-      bmiSection.style.display = (bmiSection.style.display === 'none' || bmiSection.style.display === '') ? 'block' : 'none';
-    }
-
-    function calculateBMI() {
-      const gender = document.getElementById('gender').value;
-      const height = parseFloat(document.getElementById('height').value);
-      const weight = parseFloat(document.getElementById('weight').value);
-      const result = document.getElementById('bmiResult');
-      const cards = document.getElementById('dietCards');
-      const dietBtn = document.getElementById('dietBtn');
-
-      cards.innerHTML = "";
-      result.style.color = "red";
-      bmiCalculated = false;
-      dietBtn.disabled = true;
-
-      if (!gender || isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
-        result.innerText = "⚠️ Please fill in all fields with valid numbers!";
-        return;
-      }
-
-      const heightInMeters = height / 100;
-      const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
-
-      if (bmi < 18.5) bmiCategory = "Underweight";
-      else if (bmi < 24.9) bmiCategory = "Normal";
-      else if (bmi < 29.9) bmiCategory = "Overweight";
-      else bmiCategory = "Obese";
-
-      result.innerText = `Being a ${gender}, your BMI is ${bmi} (${bmiCategory})`;
-      result.style.color = "#2e7d32";
-
-      bmiCalculated = true;
-      dietBtn.disabled = false;
-    }
-
-    function dietAnalysis() {
-      if (!bmiCalculated) return;
-
-      const cards = document.getElementById('dietCards');
-      cards.innerHTML = `
-        <div class="food-card veg" onclick="showDiet('Vegetarian')">
-          <div class="emoji">🥦</div>
-          <h3>Vegetarian</h3>
-        </div>
-        <div class="food-card nonveg" onclick="showDiet('Non-Vegetarian')">
-          <div class="emoji">🍗</div>
-          <h3>Non-Vegetarian</h3>
-        </div>
-        <div class="food-card vegan" onclick="showDiet('Vegan')">
-          <div class="emoji">🌱</div>
-          <h3>Vegan</h3>
-        </div>
-      `;
-    }
-
-    function showDiet(type) {
-      const links = {
-        Underweight: {
-          'Vegetarian': 'vegunder.html',
-          'Non-Vegetarian': 'nonvegunder.html',
-          'Vegan': 'veganunder.html'
-        },
-        Normal: {
-          'Vegetarian': 'vegnormal.html',
-          'Non-Vegetarian': 'nonvegnormal.html',
-          'Vegan': 'vegannormal.html'
-        },
-        Overweight: {
-          'Vegetarian': 'vegover.html',
-          'Non-Vegetarian': 'nonvegover.html',
-          'Vegan': 'veganover.html'
-        },
-        Obese: {
-          'Vegetarian': 'vegobese.html',
-          'Non-Vegetarian': 'nonvegobese.html',
-          'Vegan': 'veganobese.html'
-        }
-      };
-
-      const redirect = links[bmiCategory]?.[type];
-      if (redirect) {
-        window.location.href = redirect;
-      } else {
-        alert(`📋 ${type} Diet Plan for ${bmiCategory} not found.`);
-      }
-    }
-  </script>
-
-</body>
-</html>
->>>>>>> dad4a264e98e820f33b7ddeee9550b5df94ba563
